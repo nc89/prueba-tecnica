@@ -27,19 +27,13 @@ public class CitaService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    public List<PacientesDto> obtenerCitasPorFechaYHora(ResponseDto rdto) {
+    public List<String> obtenerCitasPorFechaYHora(ResponseDto rdto) {
         Optional<MedicoEntity> medico= medicoRepository.findByNroLicencia(rdto.getNroLicencia());
-        List<PacientesDto> dtoList =null;
+        List<String> pacientes =null;
         if(medico.isPresent()){
-            List<PacienteEntity> pacientes= pacienteRepository.findByFechaAndHoraBetween(rdto.getNroLicencia(),rdto.getFecha(), rdto.getHoraInicio(),rdto.getHoraFin());
-            pacientes.forEach(pacienteEntity -> {
-                PacientesDto pacientesDto = new PacientesDto();
-                pacientesDto.setNombre(pacienteEntity.getNombre());
-                pacientesDto.setApellido(pacienteEntity.getApellido());
-                dtoList.add(pacientesDto);
-            });
+            pacientes= pacienteRepository.findByFechaAndHoraBetween(rdto.getNroLicencia(),rdto.getFechaInicio(), rdto.getFechaFin());
         }
 
-        return dtoList;
+        return pacientes;
     }
 }
