@@ -31,7 +31,7 @@ public class CitaService {
         Optional<MedicoEntity> medico= medicoRepository.findByNroLicencia(rdto.getNroLicencia());
         List<String> pacientes =null;
         if(medico.isPresent()){
-            pacientes= pacienteRepository.findByFechaAndHoraBetween(rdto.getNroLicencia(),rdto.getFechaInicio(), rdto.getFechaFin());
+            pacientes= pacienteRepository.findByFechaAndHoraBetween(rdto.getNroLicencia(),rdto.getFecha(),rdto.getHoraInicio(), rdto.getHoraFin());
         }
 
         return pacientes;

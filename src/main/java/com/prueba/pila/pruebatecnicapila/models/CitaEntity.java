@@ -9,6 +9,7 @@ import lombok.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import java.time.LocalTime;
 import java.util.Set;
 
 @Entity
@@ -24,7 +25,10 @@ public class CitaEntity {
     private Long idCita;
 
     @Column(name="fecha")
-    private LocalDateTime fechahora;
+    private LocalDate fecha;
+
+    @Column(name="hora")
+    private LocalTime hora;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
