@@ -24,10 +24,7 @@ public class CitaEntity {
     private Long idCita;
 
     @Column(name="fecha")
-    private LocalDate fecha;
-
-    @Column(name="hora")
-    private String hora;
+    private LocalDateTime fechahora;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
